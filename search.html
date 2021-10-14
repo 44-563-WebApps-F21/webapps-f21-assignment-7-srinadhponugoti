@@ -62,9 +62,11 @@
   <script>
     let ids = ["picture1", "picture2", "picture3", "picture4", "picture5", "picture6", "picture7", "picture8", "picture9", "picture10", "picture11", "picture12", "picture13", "picture14", "picture15", "picture16", "picture17", "picture18", "picture19", "picture20", "picture21", "picture22", "picture23", "picture24"]
     tirecount = 0
-    animalLocation = 13
+  
     clicks = 1
-
+    min = 0
+    max = 23
+    animalLocation = Math.floor(Math.random() *(min-min+1)+min)
     function check(position) {
       id = ids[position]
       if (position == animalLocation) {
@@ -74,7 +76,14 @@
       out.innerHTML = "Number of tries is " + clicks
       clicks += 1
       distance(position, animalLocation)
+      reset()
     }
+    function reset(){
+            clicks = 0
+            out = document.getElementById("tries")
+            out.innerHTML = "Number of tries is "+ clicks
+            animalLocation = Math.floor(Math.random() * (max - min + 1) + min)
+        }
 
     function distance(position, animalLocation) {
       row = 0
@@ -109,8 +118,6 @@
       ret.innerHTML = "Distance is " + actualdistance
     }
   </script>
-  </div>
 
 </body>
 
-</html>
